@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { ChangeEvent, useState } from 'react'
 import { FiDollarSign } from 'react-icons/fi'
 import './loanAmountInput.scss';
+import { formatNumber } from '../../helpers/formatNumber';
 // The money input component should:
 
 // Allow only numbers

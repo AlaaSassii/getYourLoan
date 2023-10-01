@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, KeyboardEventHandler } from "react";
 import LoanAmountInput from "../loanAmountInput"
 import LoanRepaymentDurationSelector from "../loanRepaymentDurationSelector"
 import LoanResult from "../loanResult"
@@ -43,7 +43,7 @@ const LoanCard = () => {
         }
     }
 
-    const handleKeyPress = (event: KeyboardEvent) => {
+    const handleKeyPress = (event: KeyboardEventHandler<HTMLInputElement>) => {
         if (event.key === "ArrowUp") {
             increaseNumberOfMonth();
         } else if (event.key === "ArrowDown") {
@@ -64,7 +64,12 @@ const LoanCard = () => {
                     loanAmout={loanAmout}
                     handleChangeLoanAmoutn={handleChangeLoanAmoutn}
                 />
-                <LoanRepaymentDurationSelector />
+                <LoanRepaymentDurationSelector
+                    numberOfMonth={numberOfMonths}
+                    increaseNumberOfMonth={increaseNumberOfMonth}
+                    decreaseNumberOfMonth={decreaseNumberOfMonth}
+                    handleKeyPress={handleKeyPress}
+                />
             </div>
             <LoanResult />
 
