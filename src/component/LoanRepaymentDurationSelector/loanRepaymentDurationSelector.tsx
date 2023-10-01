@@ -1,4 +1,3 @@
-import React from 'react'
 import './loanRepaymentDurationSelector.scss'
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md'
 
@@ -10,7 +9,8 @@ const LoanRepaymentDurationSelector = () => {
             <div className='loan__repayment__duration__selector'>
                 <button><MdArrowBackIosNew /></button>
                 <input
-                    type="text"
+                    type="number"
+                    value={12}
                 />
                 <button><MdArrowForwardIos /></button>
             </div>

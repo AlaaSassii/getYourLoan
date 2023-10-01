@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from 'react'
 import { FiDollarSign } from 'react-icons/fi'
 import './loanAmountInput.scss';
 const LoanAmountInput = () => {
-    const [loanAmountValue, setLoanAmountValue] = useState('')
+    const [loanAmountValue, setLoanAmountValue] = useState('24.000')
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setLoanAmountValue(event.target.value)
@@ -17,6 +17,7 @@ const LoanAmountInput = () => {
                 <input
                     type="text"
                     placeholder=''
+                    value={loanAmountValue}
                     onChange={handleChange}
                 />
             </div>

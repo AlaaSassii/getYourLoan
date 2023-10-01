@@ -3,7 +3,10 @@ import LoanTypeSelector from "./component/loanTypeSelector"
 function App() {
 
   return (
-    <LoanTypeSelector />
+    <>
+      <h6>let's plan your loan. </h6>
+
+    </>
   )
 }
 
