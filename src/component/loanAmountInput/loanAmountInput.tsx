@@ -7,7 +7,7 @@ import './loanAmountInput.scss';
 // Display the value formatted as money (e.g 3500.45 should be 3,500.44)
 // Respect the min and max amounts of the selected product
 const LoanAmountInput = () => {
-    const [loanAmountValue, setLoanAmountValue] = useState('24.000')
+    const [loanAmountValue, setLoanAmountValue] = useState('')
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setLoanAmountValue(event.target.value)
