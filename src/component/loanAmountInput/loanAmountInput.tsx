@@ -1,32 +1,32 @@
-import { FC } from 'react';
+import { Dispatch, FC, SetStateAction } from 'react';
 import { ChangeEvent } from 'react'
 import { FiDollarSign } from 'react-icons/fi'
 import './loanAmountInput.scss';
 import { formatNumber } from '../../helpers/formatNumber';
-import { productType } from '../../types/productsType';
-// The money input component should:
 
-// Allow only numbers
-// Display the value formatted as money (e.g 3500.45 should be 3,500.44)
-// Respect the min and max amounts of the selected product
 type loanAmoutInputProps = {
-    product: null | productType
     loanAmout: null | number,
-    handleChangeLoanAmoutn: (event: ChangeEvent<HTMLInputElement>) => void,
+    loanAmountErrorMessage: null | string
+    inputFocused: boolean,
+    setInputFocused: Dispatch<SetStateAction<boolean>>
+    handleChangeLoanAmount: (event: ChangeEvent<HTMLInputElement>) => void,
 }
 
-const LoanAmountInput: FC<loanAmoutInputProps> = ({ loanAmout, product, handleChangeLoanAmoutn, }) => {
+const LoanAmountInput: FC<loanAmoutInputProps> = ({ loanAmout, loanAmountErrorMessage, inputFocused, setInputFocused, handleChangeLoanAmount, }) => {
 
     return (
         <div className='loan__amount__input__container'>
+            {loanAmountErrorMessage && <span>{loanAmountErrorMessage}</span>}
             <label>loan amount</label>
             <div className='loan__amount__input'>
                 <div>
                     <FiDollarSign />
                 </div>
                 <input
-                    value={loanAmout === null ? '0' : formatNumber(loanAmout.toString())}
-                    onChange={handleChangeLoanAmoutn}
+                    onFocus={() => setInputFocused(true)}
+                    onBlur={() => setInputFocused(false)}
+                    value={loanAmout === null ? '0' : inputFocused ? loanAmout : formatNumber(loanAmout.toString())}
+                    onChange={handleChangeLoanAmount}
                 />
             </div>
         </div>

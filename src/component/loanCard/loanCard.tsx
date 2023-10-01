@@ -14,26 +14,26 @@ const LoanCard = () => {
     const { products, pending, error } = useProducts()
     const [product, setProduct] = useState<productType | null>(null);
     const [loanAmout, setLoanAmount] = useState<number | null>(null);
+    const [inputFocused, setInputFocused] = useState(false);
+    const [loanAmountErrorMessage, setLoanAmountErrorMessage] = useState<string | null>(null);
     const [numberOfMonths, setNumberOfMonths] = useState<number | null>(null);
 
     const chooseProduct = (product: productType) => {
         setProduct(product);
         setLoanAmount(Number(product.min_amount))
         setNumberOfMonths(Number(product.min_tenure))
+        setLoanAmountErrorMessage(null)
     }
 
-    const handleChangeLoanAmoutn = (event: ChangeEvent<HTMLInputElement>) => {
+    const handleChangeLoanAmount = (event: ChangeEvent<HTMLInputElement>) => {
         const amount = Number(reverseFormatNumber(event.target.value))
         console.log({ amount, min_amount: Number(product?.min_amount), max_amount: Number(product?.max_amount) })
         if (isCharacterNotANumber(amount.toString())) return
         setLoanAmount(amount)
         if (!(amount >= Number(product?.min_amount) && amount <= Number(product?.max_amount))) {
-            if (amount <= Number(product?.min_amount)) {
-                alert(`the amount is less than the minimum amount of the product which is ${formatNumber(product?.min_amount)}`)
-            }
-            else {
-                alert(`the amount is more than the maximum amount of the product which is $${formatNumber(product?.max_amount)}`)
-            }
+            setLoanAmountErrorMessage(`Please input a value between ${formatNumber(product?.min_amount)} and ${formatNumber(product?.max_amount)}`)
+        } else {
+            setLoanAmountErrorMessage(null)
         }
     }
     const increaseNumberOfMonth = () => {
@@ -71,12 +71,15 @@ const LoanCard = () => {
             <LoanTypeSelector
                 products={products}
                 chooseProduct={chooseProduct}
+
             />
             <div className="loan__inputs">
                 <LoanAmountInput
                     loanAmout={loanAmout}
-                    handleChangeLoanAmoutn={handleChangeLoanAmoutn}
-                    product={product}
+                    inputFocused={inputFocused}
+                    setInputFocused={setInputFocused}
+                    loanAmountErrorMessage={loanAmountErrorMessage}
+                    handleChangeLoanAmount={handleChangeLoanAmount}
                 />
                 <LoanRepaymentDurationSelector
                     numberOfMonth={numberOfMonths}
