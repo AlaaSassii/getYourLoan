@@ -11,9 +11,11 @@
 }
 @mixin input { 
     background-color: $white;
+    min-height: 30px;
     @include border;
     @include borderRadius;
     @include inputPadding;
+
 }
 
 @mixin borderNone {

@@ -1,0 +1,23 @@
+@import '../../scss/main.scss';
+
+.loan__repayment__duration__selector__contaienr{
+    label{
+        color:$dark-gray;
+    }
+    .loan__repayment__duration__selector{
+        @include input;
+        display: flex;
+        padding: 0;
+        input,button{
+            min-height: 30px;
+            @include borderNone;
+
+        }
+        button{
+            padding:5px;
+            @include borderButtonNone;
+            @include centerElement;
+            cursor: pointer;
+        }
+    }
+}

@@ -1,4 +1,4 @@
-
+import './loanResult.scss'
 const LoanResult = () => {
     return (
         <div className="loan__result__contaienr">

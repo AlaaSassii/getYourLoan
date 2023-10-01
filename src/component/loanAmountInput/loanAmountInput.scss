@@ -1,9 +1,13 @@
 @import '../../scss/main.scss';
 
 .loan__amount__input__container{
+    label{
+        color:$dark-gray;
+    }
     .loan__amount__input{
         @include input;
         display: flex;
+        align-items: center;
         input{
             @include borderNone;
         }

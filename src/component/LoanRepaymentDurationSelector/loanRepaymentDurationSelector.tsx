@@ -1,5 +1,5 @@
-import './loanRepaymentDurationSelector.scss'
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md'
+import './loanRepaymentDurationSelector.scss'
 
 const LoanRepaymentDurationSelector = () => {
 
