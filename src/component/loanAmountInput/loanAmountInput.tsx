@@ -1,6 +1,11 @@
 import { ChangeEvent, useState } from 'react'
 import { FiDollarSign } from 'react-icons/fi'
 import './loanAmountInput.scss';
+// The money input component should:
+
+// Allow only numbers
+// Display the value formatted as money (e.g 3500.45 should be 3,500.44)
+// Respect the min and max amounts of the selected product
 const LoanAmountInput = () => {
     const [loanAmountValue, setLoanAmountValue] = useState('24.000')
 

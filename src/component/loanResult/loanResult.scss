@@ -1,0 +1,18 @@
+@import '../../scss/main.scss';
+
+.loan__result__contaienr{
+    width: 80%;
+    margin: 30px auto;
+    @include border;
+    @include borderRadius;
+    .monthly__amount{
+        display: flex;
+        justify-content: space-between;
+        padding:20px;
+    }
+    .total__amount{
+        background-color: $light-gray;
+        font-size: small;
+        padding: 20px;
+    }
+}

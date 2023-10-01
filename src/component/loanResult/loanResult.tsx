@@ -1,4 +1,9 @@
 import './loanResult.scss'
+// Description & Details
+// When the Amount or months changes perform the following calculation to get the total amount:
+// total amount = loan amount + (loan amount * product interest)
+// monthly installment = total amount / # months
+// target month = current month + # months
 const LoanResult = () => {
     return (
         <div className="loan__result__contaienr">
