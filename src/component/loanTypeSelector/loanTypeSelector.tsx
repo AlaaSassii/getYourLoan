@@ -1,11 +1,14 @@
-import useProducts from '../../hooks/useProducts'
+import { FC } from 'react'
+import { productsType } from '../../types/productsType'
 import './loanTypeSelector.scss'
 
 // - Each product should be displayed using the product.image property - When a product is changed, reset the loan and months to their respective minimums
-const LoanTypeSelector = () => {
-    const { products, pending, error } = useProducts()
-    if (pending) return <h1>loading..</h1>
-    if (error) return <h1>{error}</h1>
+type loanTypeSelectorProps = {
+    products: productsType
+}
+
+const LoanTypeSelector: FC<loanTypeSelectorProps> = ({ products }) => {
+
     return (
         <div className='loan__type__selector'>
             {

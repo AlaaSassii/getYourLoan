@@ -16,7 +16,7 @@ const LoanRepaymentDurationSelector = () => {
                 <button><MdArrowBackIosNew /></button>
                 <input
                     type="number"
-                    value={12}
+                    value={null}
                 />
                 <button><MdArrowForwardIos /></button>
             </div>
