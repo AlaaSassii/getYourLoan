@@ -15,7 +15,7 @@ type loanResultProps = {
 }
 const LoanResult: FC<loanResultProps> = ({ loanAmount, numberOfMonths, product }) => {
     const totalAmount = product && loanAmount ? loanAmount + loanAmount * Number(product.interest) : 0
-    const monthLyAmount = numberOfMonths ? totalAmount / numberOfMonths : 0
+    const monthlyAmount = numberOfMonths ? totalAmount / numberOfMonths : 0
 
     const addMonthsToCurrentDate = () => {
         const monthNames = [
@@ -40,7 +40,7 @@ const LoanResult: FC<loanResultProps> = ({ loanAmount, numberOfMonths, product }
             <div className="monthly__amount">
                 <p>Monthly amount</p>
                 <div>
-                    ${formatNumber(monthLyAmount.toString())}
+                    ${formatNumber(monthlyAmount.toString())}
                 </div>
             </div>
             <div className="total__amount">

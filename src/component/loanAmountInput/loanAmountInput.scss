@@ -12,7 +12,11 @@
         gap: 5px;
         align-items: center;
         input{
+            width: 80%;
             @include borderNone;
+            font-weight: bold;
+            font-size: 25px;
+            color:#4D6475;
         }
         svg{
             color: #CBD5DC;
