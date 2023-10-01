@@ -2,11 +2,7 @@ import { FC } from 'react'
 import './loanResult.scss'
 import { productType } from '../../types/productsType'
 import { formatNumber } from '../../helpers/formatNumber'
-// Description & Details
-// When the Amount or months changes perform the following calculation to get the total amount:
-// total amount = loan amount + (loan amount * product interest)
-// monthly installment = total amount / # months
-// target month = current month + # months
+
 
 type loanResultProps = {
     loanAmount: null | number,
