@@ -8,15 +8,18 @@ const LoanAmountInput = () => {
         setLoanAmountValue(event.target.value)
     }
     return (
-        <div className='loan__amount__input'>
-            <div>
-                <FiDollarSign />
+        <div className='loan__amount__input__container'>
+            <label>loan amount</label>
+            <div className='loan__amount__input'>
+                <div>
+                    <FiDollarSign />
+                </div>
+                <input
+                    type="text"
+                    placeholder=''
+                    onChange={handleChange}
+                />
             </div>
-            <input
-                type="text"
-                placeholder=''
-                onChange={handleChange}
-            />
         </div>
     )
 }
