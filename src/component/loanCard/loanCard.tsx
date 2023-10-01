@@ -34,9 +34,9 @@ const LoanCard = () => {
             if (numberMonths <= Number(product?.max_tenure)) {
                 setNumberOfMonths(numberMonths);
             }
-
         }
     }
+
     const decreaseNumberOfMonth = () => {
         if (numberOfMonths !== null) {
             const numberMonths = numberOfMonths - 1
@@ -76,7 +76,11 @@ const LoanCard = () => {
                     handleKeyPress={handleKeyPress}
                 />
             </div>
-            <LoanResult />
+            <LoanResult
+                loanAmount={loanAmout}
+                numberOfMonths={numberOfMonths}
+                product={product}
+            />
 
         </div>
     )
