@@ -1,5 +1,6 @@
 import useProducts from '../../hooks/useProducts'
 import './loanTypeSelector.scss'
+
 const LoanTypeSelector = () => {
     const { products, pending, error } = useProducts()
     if (pending) return <h1>loading..</h1>
