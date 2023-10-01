@@ -1,0 +1,11 @@
+@import '../../scss/main.scss';
+
+.loan__amount__input__container{
+    .loan__amount__input{
+        @include input;
+        display: flex;
+        input{
+            @include borderNone;
+        }
+    }
+}

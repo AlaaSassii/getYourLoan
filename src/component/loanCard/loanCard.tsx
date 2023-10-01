@@ -7,8 +7,10 @@ const LoanCard = () => {
     return (
         <div className="loan__card">
             <LoanTypeSelector />
-            <LoanAmountInput />
-            <LoanRepaymentDurationSelector />
+            <div className="loan__inputs">
+                <LoanAmountInput />
+                <LoanRepaymentDurationSelector />
+            </div>
             <LoanResult />
 
         </div>

@@ -1,0 +1,33 @@
+@import './variables';
+
+@mixin border{
+    border: 1px solid $border-color ;
+}
+@mixin borderRadius{
+    border-radius: 4px;
+}
+@mixin inputPadding {
+    padding:5px 7px;
+}
+@mixin input { 
+    background-color: $white;
+    @include border;
+    @include borderRadius;
+    @include inputPadding;
+}
+
+@mixin borderNone {
+    border: none;
+    outline: transparent;
+}
+
+@mixin borderButtonNone{
+    @include borderNone; 
+    background-color: transparent;
+}
+
+@mixin centerElement{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
