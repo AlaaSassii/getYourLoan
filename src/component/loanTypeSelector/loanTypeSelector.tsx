@@ -1,20 +1,8 @@
-import { useState, useEffect } from 'react'
+import useProducts from '../../hooks/useProducts'
 import './loanTypeSelector.scss'
-import { productsType } from '../../types/productsType'
-
-import axios, { AxiosResponse, AxiosError } from 'axios'
 const LoanTypeSelector = () => {
-    const [products, setProducts] = useState<productsType>([])
-    const [error, setError] = useState('')
-    useEffect(() => {
-        axios.get<productsType>('/products.json')
-            .then((response: AxiosResponse) => {
-                setProducts(response.data)
-            })
-            .catch((error: AxiosError) => {
-                setError(error.message)
-            })
-    })
+    const { products, pending, error } = useProducts()
+    if (pending) return <h1>loading..</h1>
     if (error) return <h1>{error}</h1>
     return (
         <div className='loan__type__selector'>

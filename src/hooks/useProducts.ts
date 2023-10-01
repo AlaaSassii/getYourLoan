@@ -19,7 +19,7 @@ const useProducts = () => {
                 setPending(false)
 
             })
-    })
+    }, [])
     return { products, pending, error }
 
 }
