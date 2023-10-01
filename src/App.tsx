@@ -1,12 +1,10 @@
-import LoanTypeSelector from "./component/loanTypeSelector"
-
+import LoanCard from "./component/loanCard"
 function App() {
-
   return (
-    <>
-      <h6>let's plan your loan. </h6>
-
-    </>
+    <div>
+      <p className="loan__title">let's plan your <b>loan</b>. </p>
+      <LoanCard />
+    </div>
   )
 }
 
