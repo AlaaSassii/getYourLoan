@@ -1,2 +1,2 @@
-import LoanRepaymentDurationSelector from "./loanRepaymentDurationSelector";
+import LoanRepaymentDurationSelector from "./loanRepaymentDurationSelector"
 export default LoanRepaymentDurationSelector

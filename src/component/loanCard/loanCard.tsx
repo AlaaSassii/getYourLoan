@@ -1,7 +1,17 @@
+import LoanAmountInput from "../loanAmountInput"
+import LoanRepaymentDurationSelector from "../loanRepaymentDurationSelector"
+import LoanResult from "../loanResult"
+import LoanTypeSelector from "../loanTypeSelector"
 
 const LoanCard = () => {
     return (
-        <div>loanCard</div>
+        <div className="loan__card">
+            <LoanTypeSelector />
+            <LoanAmountInput />
+            <LoanRepaymentDurationSelector />
+            <LoanResult />
+
+        </div>
     )
 }
 
