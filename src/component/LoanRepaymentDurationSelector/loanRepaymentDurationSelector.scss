@@ -2,22 +2,35 @@
 
 .loan__repayment__duration__selector__contaienr{
     label{
-        color:$dark-gray;
+        @include label
     }
+    width: 100%;
     .loan__repayment__duration__selector{
+    width: 100%;
+
         @include input;
         display: flex;
+        justify-content: space-between;
         padding: 0;
         input,button{
             min-height: 30px;
             @include borderNone;
 
         }
+        
         button{
             padding:5px;
             @include borderButtonNone;
             @include centerElement;
             cursor: pointer;
+            width: 30px;
+            >svg{
+                color: #8A9CA9;
+            }
+        }
+        input{
+            text-align: center;
+            color: #708797;
         }
     }
 }

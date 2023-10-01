@@ -1,18 +1,27 @@
 @import '../../scss/main.scss';
 
 .loan__result__contaienr{
+   
     width: 80%;
     margin: 30px auto;
     @include border;
     @include borderRadius;
+    @media(max-width:991px){
+        width: 95%;
+        }
     .monthly__amount{
         display: flex;
         justify-content: space-between;
         padding:20px;
+        >div{
+            color: #0079FF;
+            font-weight: bold;
+        }
     }
     .total__amount{
-        background-color: $light-gray;
+        background-color: #E9EEF2;
         font-size: small;
         padding: 20px;
     }
+
 }

@@ -16,7 +16,7 @@ const LoanAmountInput: FC<loanAmoutInputProps> = ({ loanAmout, loanAmountErrorMe
 
     return (
         <div className='loan__amount__input__container'>
-            {loanAmountErrorMessage && <span>{loanAmountErrorMessage}</span>}
+            {loanAmountErrorMessage && <p className='error__message'>{loanAmountErrorMessage}</p>}
             <label>loan amount</label>
             <div className='loan__amount__input'>
                 <div>

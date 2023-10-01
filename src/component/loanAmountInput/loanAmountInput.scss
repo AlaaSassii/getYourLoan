@@ -1,15 +1,30 @@
 @import '../../scss/main.scss';
 
 .loan__amount__input__container{
+    position: relative;
     label{
-        color:$dark-gray;
+        @include label;
     }
+    width: 100%;
     .loan__amount__input{
         @include input;
         display: flex;
+        gap: 5px;
         align-items: center;
         input{
             @include borderNone;
         }
+        svg{
+            color: #CBD5DC;
+            font-size: small;
+            margin-top: 3px;
+        }
+    }
+    .error__message{
+        color: red;
+        font-size: xx-small;
+        position: absolute;
+        top:-10px;
+        width: 200%;
     }
 }

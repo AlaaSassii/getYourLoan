@@ -26,14 +26,16 @@ const LoanCard = () => {
     }
 
     const handleChangeLoanAmount = (event: ChangeEvent<HTMLInputElement>) => {
-        const amount = Number(reverseFormatNumber(event.target.value))
-        console.log({ amount, min_amount: Number(product?.min_amount), max_amount: Number(product?.max_amount) })
-        if (isCharacterNotANumber(amount.toString())) return
-        setLoanAmount(amount)
-        if (!(amount >= Number(product?.min_amount) && amount <= Number(product?.max_amount))) {
-            setLoanAmountErrorMessage(`Please input a value between ${formatNumber(product?.min_amount)} and ${formatNumber(product?.max_amount)}`)
-        } else {
-            setLoanAmountErrorMessage(null)
+        if (product !== null) {
+            const amount = Number(reverseFormatNumber(event.target.value))
+            if (isCharacterNotANumber(amount.toString())) return
+            setLoanAmount(amount)
+            if (!(amount >= Number(product?.min_amount) && amount <= Number(product?.max_amount))) {
+                setLoanAmountErrorMessage(`Please input a value between ${formatNumber(product?.min_amount)} and ${formatNumber(product?.max_amount)}`)
+
+            } else {
+                setLoanAmountErrorMessage(null)
+            }
         }
     }
     const increaseNumberOfMonth = () => {
@@ -64,6 +66,7 @@ const LoanCard = () => {
 
     }
 
+
     if (pending) return <h1>loading..</h1>
     if (error) return <h1>{error}</h1>
     return (
@@ -71,7 +74,6 @@ const LoanCard = () => {
             <LoanTypeSelector
                 products={products}
                 chooseProduct={chooseProduct}
-
             />
             <div className="loan__inputs">
                 <LoanAmountInput
@@ -93,7 +95,7 @@ const LoanCard = () => {
                 numberOfMonths={numberOfMonths}
                 product={product}
             />
-
+            <button>Apply Now</button>
         </div>
     )
 }
