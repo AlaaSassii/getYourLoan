@@ -57,9 +57,13 @@ const LoanCard = () => {
         <div className="loan__card">
             <LoanTypeSelector
                 products={products}
+                chooseProduct={chooseProduct}
             />
             <div className="loan__inputs">
-                <LoanAmountInput />
+                <LoanAmountInput
+                    loanAmout={loanAmout}
+                    handleChangeLoanAmoutn={handleChangeLoanAmoutn}
+                />
                 <LoanRepaymentDurationSelector />
             </div>
             <LoanResult />

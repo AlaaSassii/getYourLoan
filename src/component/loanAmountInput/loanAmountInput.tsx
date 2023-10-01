@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { ChangeEvent, useState } from 'react'
 import { FiDollarSign } from 'react-icons/fi'
 import './loanAmountInput.scss';
@@ -6,12 +7,13 @@ import './loanAmountInput.scss';
 // Allow only numbers
 // Display the value formatted as money (e.g 3500.45 should be 3,500.44)
 // Respect the min and max amounts of the selected product
-const LoanAmountInput = () => {
-    const [loanAmountValue, setLoanAmountValue] = useState('')
+type loanAmoutInputProps = {
+    loanAmout: null | number
+    handleChangeLoanAmoutn: (event: ChangeEvent<HTMLInputElement>) => void
+}
 
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setLoanAmountValue(event.target.value)
-    }
+const LoanAmountInput: FC<loanAmoutInputProps> = ({ loanAmout, handleChangeLoanAmoutn }) => {
+
     return (
         <div className='loan__amount__input__container'>
             <label>loan amount</label>
@@ -21,9 +23,8 @@ const LoanAmountInput = () => {
                 </div>
                 <input
                     type="text"
-                    placeholder=''
-                    value={loanAmountValue}
-                    onChange={handleChange}
+                    value={loanAmout === null ? '0' : formatNumber(loanAmout.toString())}
+                    onChange={handleChangeLoanAmoutn}
                 />
             </div>
         </div>
