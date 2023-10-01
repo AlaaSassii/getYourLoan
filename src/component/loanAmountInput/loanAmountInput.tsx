@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent } from 'react'
 import { FiDollarSign } from 'react-icons/fi'
 import './loanAmountInput.scss';
 import { formatNumber } from '../../helpers/formatNumber';
@@ -9,11 +9,12 @@ import { formatNumber } from '../../helpers/formatNumber';
 // Display the value formatted as money (e.g 3500.45 should be 3,500.44)
 // Respect the min and max amounts of the selected product
 type loanAmoutInputProps = {
-    loanAmout: null | number
-    handleChangeLoanAmoutn: (event: ChangeEvent<HTMLInputElement>) => void
+    loanAmout: null | number,
+    handleChangeLoanAmoutn: (event: ChangeEvent<HTMLInputElement>) => void,
+    handleBlur: () => void
 }
 
-const LoanAmountInput: FC<loanAmoutInputProps> = ({ loanAmout, handleChangeLoanAmoutn }) => {
+const LoanAmountInput: FC<loanAmoutInputProps> = ({ loanAmout, handleChangeLoanAmoutn, handleBlur }) => {
 
     return (
         <div className='loan__amount__input__container'>
@@ -26,6 +27,7 @@ const LoanAmountInput: FC<loanAmoutInputProps> = ({ loanAmout, handleChangeLoanA
                     type="text"
                     value={loanAmout === null ? '0' : formatNumber(loanAmout.toString())}
                     onChange={handleChangeLoanAmoutn}
+                    onBlur={handleBlur}
                 />
             </div>
         </div>

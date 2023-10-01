@@ -12,6 +12,7 @@ const LoanCard = () => {
     const { products, pending, error } = useProducts()
     const [product, setProduct] = useState<productType | null>(null);
     const [loanAmout, setLoanAmount] = useState<number | null>(null);
+    const [temporaryInput, setTemporaryInput] = useState('');
     const [numberOfMonths, setNumberOfMonths] = useState<number | null>(null);
 
     const chooseProduct = (product: productType) => {
@@ -22,12 +23,20 @@ const LoanCard = () => {
 
     const handleChangeLoanAmoutn = (event: ChangeEvent<HTMLInputElement>) => {
         if (isCharacterNotANumber(event.target.value)) return
-        const amount = Number(event.target.value);
-        if (amount >= Number(product?.min_amount) || amount <= Number(product?.max_amount)) {
-            setLoanAmount(amount)
-        }
+        setTemporaryInput(event.target.value)
     }
-
+    const handleBlur = () => {
+        const amount = Number(temporaryInput);
+        if (amount >= Number(product?.min_amount) && amount <= Number(product?.max_amount)) {
+            setLoanAmount(amount);
+        } else {
+            if (amount < Number(product?.min_amount)) {
+                setLoanAmount(Number(product?.min_amount));
+            } else {
+                setLoanAmount(Number(product?.max_amount));
+            }
+        }
+    };
     const increaseNumberOfMonth = () => {
         if (numberOfMonths !== null) {
             const numberMonths = numberOfMonths + 1;
@@ -68,6 +77,7 @@ const LoanCard = () => {
                 <LoanAmountInput
                     loanAmout={loanAmout}
                     handleChangeLoanAmoutn={handleChangeLoanAmoutn}
+                    handleBlur={handleBlur}
                 />
                 <LoanRepaymentDurationSelector
                     numberOfMonth={numberOfMonths}
