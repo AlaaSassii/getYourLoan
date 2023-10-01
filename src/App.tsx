@@ -1,8 +1,9 @@
+import LoanTypeSelector from "./component/loanTypeSelector"
 
 function App() {
 
   return (
-    null
+    <LoanTypeSelector />
   )
 }
 
