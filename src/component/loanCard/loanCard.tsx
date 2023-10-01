@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, KeyboardEventHandler } from "react";
+import { useState, ChangeEvent, KeyboardEvent } from "react";
 import LoanAmountInput from "../loanAmountInput"
 import LoanRepaymentDurationSelector from "../loanRepaymentDurationSelector"
 import LoanResult from "../loanResult"
@@ -31,24 +31,29 @@ const LoanCard = () => {
     const increaseNumberOfMonth = () => {
         if (numberOfMonths !== null) {
             const numberMonths = numberOfMonths + 1;
-            if (numberMonths < Number(product?.max_tenure))
-                setNumberOfMonths(numberMonths)
+            if (numberMonths <= Number(product?.max_tenure)) {
+                setNumberOfMonths(numberMonths);
+            }
+
         }
     }
     const decreaseNumberOfMonth = () => {
         if (numberOfMonths !== null) {
             const numberMonths = numberOfMonths - 1
-            if (numberMonths < Number(product?.min_tenure))
+            if (numberMonths >= Number(product?.min_tenure)) {
                 setNumberOfMonths(numberMonths)
+            }
         }
     }
 
-    const handleKeyPress = (event: KeyboardEventHandler<HTMLInputElement>) => {
-        if (event.key === "ArrowUp") {
-            increaseNumberOfMonth();
-        } else if (event.key === "ArrowDown") {
+    const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === "ArrowDown") {
             decreaseNumberOfMonth()
         }
+        if (event.key === "ArrowUp") {
+            increaseNumberOfMonth();
+        }
+
     }
 
     if (pending) return <h1>loading..</h1>
