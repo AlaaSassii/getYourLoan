@@ -1,0 +1,2 @@
+import LoanRepaymentDurationSelector from "./loanRepaymentDurationSelector";
+export default LoanRepaymentDurationSelector
