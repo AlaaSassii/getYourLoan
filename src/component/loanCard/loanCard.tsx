@@ -12,7 +12,6 @@ const LoanCard = () => {
     const { products, pending, error } = useProducts()
     const [product, setProduct] = useState<productType | null>(null);
     const [loanAmout, setLoanAmount] = useState<number | null>(null);
-
     const [numberOfMonths, setNumberOfMonths] = useState<number | null>(null);
 
     const chooseProduct = (product: productType) => {

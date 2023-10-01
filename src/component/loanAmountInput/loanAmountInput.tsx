@@ -25,11 +25,8 @@ const LoanAmountInput: FC<loanAmoutInputProps> = ({ loanAmout, product, handleCh
                     <FiDollarSign />
                 </div>
                 <input
-                    type="text"
                     value={loanAmout === null ? '0' : formatNumber(loanAmout.toString())}
                     onChange={handleChangeLoanAmoutn}
-                    max={product?.max_amount}
-                    min={product?.min_amount}
                 />
             </div>
         </div>
