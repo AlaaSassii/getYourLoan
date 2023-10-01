@@ -7,6 +7,8 @@ import { productType } from "../../types/productsType";
 import './loanCard.scss';
 import useProducts from "../../hooks/useProducts";
 import { isCharacterNotANumber } from "../../helpers/charIsNotNumber";
+import { reverseFormatNumber } from "../../helpers/reverseFormatNumber";
+import { formatNumber } from "../../helpers/formatNumber";
 
 const LoanCard = () => {
     const { products, pending, error } = useProducts()
@@ -21,13 +23,19 @@ const LoanCard = () => {
     }
 
     const handleChangeLoanAmoutn = (event: ChangeEvent<HTMLInputElement>) => {
-        if (isCharacterNotANumber(event.target.value)) return
-        const amount = Number(event.target.value);
-        if (amount >= Number(product?.min_amount) || amount <= Number(product?.max_amount)) {
-            setLoanAmount(amount)
+        const amount = Number(reverseFormatNumber(event.target.value))
+        console.log({ amount, min_amount: Number(product?.min_amount), max_amount: Number(product?.max_amount) })
+        if (isCharacterNotANumber(amount.toString())) return
+        setLoanAmount(amount)
+        if (!(amount >= Number(product?.min_amount) && amount <= Number(product?.max_amount))) {
+            if (amount <= Number(product?.min_amount)) {
+                alert(`the amount is less than the minimum amount of the product which is ${formatNumber(product?.min_amount)}`)
+            }
+            else {
+                alert(`the amount is more than the maximum amount of the product which is $${formatNumber(product?.max_amount)}`)
+            }
         }
     }
-
     const increaseNumberOfMonth = () => {
         if (numberOfMonths !== null) {
             const numberMonths = numberOfMonths + 1;
